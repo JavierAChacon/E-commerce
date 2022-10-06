@@ -6,19 +6,22 @@ import Purchases from './pages/Purchases'
 import './App.css'
 import MyNav from './components/MyNav'
 import Loading from './components/Loading'
+import {useSelector} from "react-redux"
 
 
 function App() {
+  
+  const isLoading = useSelector(state => state.isLoading)
 
   return (
    <HashRouter>
     <MyNav/>
-    <Loading/>
+    {isLoading && <Loading/>}
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/product/:id" element={<Product/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
-        <Route path="/cart" element={<Purchases/>}></Route>
+        <Route path="/purchases" element={<Purchases/>}></Route>
       </Routes>
    </HashRouter>
   )
