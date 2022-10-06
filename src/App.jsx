@@ -6,12 +6,20 @@ import Purchases from './pages/Purchases'
 import './App.css'
 import MyNav from './components/MyNav'
 import Loading from './components/Loading'
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
+import { useEffect } from 'react'
+import {getProductsThunk} from './store/slices/products.slice'
 
 
 function App() {
   
   const isLoading = useSelector(state => state.isLoading)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getProductsThunk())
+  }, [])
 
   return (
    <HashRouter>
