@@ -36,6 +36,18 @@ export const addCartThunk = (product) => (dispatch) => {
   .finally(() => dispatch(setIsLoading(false)))
 }
 
+export const checkoutThunk = () => (dispatch) => {
+  
+  dispatch(setIsLoading(true))
+  
+  return axios
+  .post('https://ecommerce-api-react.herokuapp.com/api/v1/purchases', {}, getConfig())
+
+  .then(() => dispatch(setCartProducts([])))
+
+  .finally(() => dispatch(setIsLoading(false)))
+}
+
 
 export const { setCartProducts } = cartProducts.actions;
 
