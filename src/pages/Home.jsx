@@ -43,10 +43,10 @@ const Home = () => {
         <div>
             <div className='nav'>
 
-                {
+               {
                     categories.map(category => (
                         
-                        <Button key={category.id} classname="nav" onClick={() => filterCategory(category.id)}>{category.name}</Button>
+                        <Button key={category.id} className="nav" onClick={() => filterCategory(category.id)}>{category.name}</Button>
                     ))
                 }
 
@@ -66,7 +66,8 @@ const Home = () => {
             </InputGroup>
 
             {
-                productsFiltered.map((product) => (
+                productsFiltered.map((product) => ( 
+                    
                     <div key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
 
                         <h2>{product.title}</h2>
