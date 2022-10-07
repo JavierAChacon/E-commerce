@@ -11,15 +11,30 @@ export const cartProducts = createSlice({
     }
 })
 
-export const getCartProductsThunk = () => dispatch => {
+export const getCartProductsThunk = () => (dispatch) => {
   dispatch(setIsLoading(true))
-  axios
+  return axios
   .get('https://ecommerce-api-react.herokuapp.com/api/v1/cart', getConfig())
-  .then(res => {
-      dispatch(setCartProducts(res.data.data.cart.products))})
+
+  .then(res => dispatch(setCartProducts(res.data.data.cart.products)))
+
+  .catch(error => console.log(error.response))
+
   .finally(() => dispatch(setIsLoading(false)))
 }
 
+
+export const addCartThunk = (product) => (dispatch) => {
+  
+  dispatch(setIsLoading(true))
+  
+  return axios
+  .post('https://ecommerce-api-react.herokuapp.com/api/v1/cart', product, getConfig())
+
+  .then(() => dispatch(getCartProductsThunk()))
+
+  .finally(() => dispatch(setIsLoading(false)))
+}
 
 
 export const { setCartProducts } = cartProducts.actions;
