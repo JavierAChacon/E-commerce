@@ -1,0 +1,12 @@
+.nav{
+    background-color: antiquewhite;
+    display: flex;
+
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.nav > *{
+    flex-grow: 1;
+    flex-basis: 0;
+}

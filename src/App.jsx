@@ -9,6 +9,7 @@ import Loading from './components/Loading'
 import {useDispatch, useSelector} from "react-redux"
 import { useEffect } from 'react'
 import {getProductsThunk} from './store/slices/products.slice'
+import ProtectedRoutes from './components/ProtectedRoutes'
 
 
 function App() {
@@ -29,7 +30,9 @@ function App() {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/product/:id" element={<Product/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
-        <Route path="/purchases" element={<Purchases/>}></Route>
+        <Route element={<ProtectedRoutes/>}>
+          <Route path="/purchases" element={<Purchases/>}></Route>
+        </Route>
       </Routes>
    </HashRouter>
   )

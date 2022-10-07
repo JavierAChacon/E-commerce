@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Button, InputGroup, Form } from 'react-bootstrap';
-
+import "../styles/home.css"
 
 
 const Home = () => {
@@ -46,7 +46,7 @@ const Home = () => {
                {
                     categories.map(category => (
                         
-                        <Button key={category.id} className="nav" onClick={() => filterCategory(category.id)}>{category.name}</Button>
+                        <Button key={category.id} onClick={() => filterCategory(category.id)}>{category.name}</Button>
                     ))
                 }
 
